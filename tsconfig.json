@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["esnext", "webworker"],
+    "strict": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "outDir": "dist",
+    "typeRoots": ["node_modules/@types", "types"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
