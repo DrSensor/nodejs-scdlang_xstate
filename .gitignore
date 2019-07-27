@@ -1,3 +1,6 @@
+# Generated State Machine
+src/fsm/
+
 # Lock file
 *-lock.*
 .lock

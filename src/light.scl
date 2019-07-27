@@ -1,0 +1,15 @@
+/// Traffic Light
+Green -> Yellow @ Timer
+Green -> Red @ PowerOutage
+
+Yellow -> Red @ Timer
+Yellow -> Red @ PowerOutage
+
+Red -> Green @ Timer
+->> Red @ PowerOutage
+
+
+/// Pedestrian Light
+// Walk -> Wait @ PedCountdown
+// Wait -> Stop @ PedCountdown[timeout]
+// Stop -> Green

@@ -5,20 +5,28 @@
 
 <!--TODO: waiting for https://github.com/jakedeichert/mask/issues/24 to resolve-->
 ```sh
+rm --recursive --force dist/ types/ src/fsm/*.ts
+
+mask generate 'src/*.scl'
+
 npx tsc --build && \
 node dist/index.js
 ```
 
-## compile
-> Compile sources into JavaScript
+## generate (files)
+> Generate State Machine from Scdlang declaration file
 
 ```sh
-npx tsc --project . --listEmittedFiles
+for file in $files; do
+  filestem=`basename $file .scl`
+  scrap generate src/$filestem.scl --format xstate --as typescript > src/fsm/$filestem.ts
+  scrap generate src/$filestem.scl --format xstate --as javascript >> src/fsm/$filestem.ts
+done
 ```
 
 ## build
 > Build sources into JavaScript
-
+bas
 see [here](https://www.typescriptlang.org/docs/handbook/project-references.html#build-mode-for-typescript) for more info
 
 ```sh
