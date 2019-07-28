@@ -3,24 +3,41 @@
 ## start
 > Run project
 
-<!--TODO: waiting for https://github.com/jakedeichert/mask/issues/24 to resolve-->
 ```sh
 rm --recursive --force dist/ types/ src/fsm/*.ts
 
 mask generate 'src/*.scl'
 
-npx tsc --build && \
+mask build && \
 node dist/index.js
 ```
 
+### start viz
+> Run project and generate the state diagram
+
+```sh
+mask start
+mask visualize 'src/*.scl'
+```
+
 ## generate (files)
-> Generate State Machine from Scdlang declaration file
+> Generate XState machine config from Scdlang declaration file
 
 ```sh
 for file in $files; do
   filestem=`basename $file .scl`
   scrap generate src/$filestem.scl --format xstate --as typescript > src/fsm/$filestem.ts
   scrap generate src/$filestem.scl --format xstate --as javascript >> src/fsm/$filestem.ts
+done
+```
+
+## visualize (files)
+> Generate state diagram from Scdlang declaration file
+
+```sh
+for file in $files; do
+  filestem=`basename $file .scl`
+  scrap generate src/$filestem.scl --format graph --as png --output src/fsm/$filestem.png
 done
 ```
 
@@ -75,4 +92,5 @@ npx tslint --project . --fix
 ```sh
 cargo install s-crap
 npx pnpm install
+npx pnpm install --global state-machine-cat
 ```
